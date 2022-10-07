@@ -1,0 +1,170 @@
+rm: cannot remove ‘validation/*’: No such file or directory
+rm: cannot remove ‘stride50_val/*’: No such file or directory
+rm: cannot remove ‘int_val/*’: No such file or directory
+rm: cannot remove ‘filtered_val/*’: No such file or directory
+rm: cannot remove ‘dataset/*’: No such file or directory
+rm: cannot remove ‘split_long_reads_val/*’: No such file or directory
+folder Cyber_data/ exist... cleaning dictionary
+Dictionary cleaned
+Capturing compressed features
+.................................................. 1M
+.................................................. 2M
+.................................................. 3M
+............
+[mclIO] writing <out/merged.mci>
+.......................................
+[mclIO] wrote native interchange 176826x176826 matrix with 4660802 entries to stream <out/merged.mci>
+[mclIO] wrote 176826 tab entries to stream <out/merged_mcxload.tab>
+[mcxload] tab has 176826 entries
+[mclIO] reading <out/merged.mci>
+.......................................
+[mclIO] read native interchange 176826x176826 matrix with 4660802 entries
+[mcl] pid 206751
+ ite -------------------  chaos  time hom(avg,lo,hi) m-ie m-ex i-ex fmv
+  1  ...................  42.65  3.65 1.08/0.05/4.42 2.49 2.42 2.42   0
+  2  ...................  42.85 11.22 0.80/0.08/4.32 1.90 0.98 2.36  12
+  3  ...................  30.27 10.20 0.76/0.13/6.54 1.52 0.77 1.81  13
+  4  ...................  24.03  5.68 0.77/0.12/12.88 1.45 0.65 1.17   1
+  5  ...................  17.96  1.98 0.77/0.10/5.99 1.29 0.64 0.75   0
+  6  ...................  12.49  0.88 0.78/0.13/4.72 1.12 0.70 0.52   0
+  7  ...................   7.93  0.51 0.79/0.17/2.20 1.04 0.74 0.38   0
+  8  ...................   9.11  0.40 0.81/0.14/2.57 1.02 0.77 0.30   0
+  9  ...................   4.96  0.28 0.85/0.24/1.24 1.01 0.78 0.23   0
+ 10  ...................   3.67  0.20 0.89/0.20/1.53 1.00 0.78 0.18   0
+ 11  ...................   4.08  0.17 0.93/0.26/1.13 1.00 0.79 0.14   0
+ 12  ...................   3.95  0.14 0.95/0.28/1.29 1.00 0.82 0.12   0
+ 13  ...................   2.35  0.13 0.97/0.38/1.00 1.00 0.85 0.10   0
+ 14  ...................   2.61  0.12 0.98/0.33/1.00 1.00 0.90 0.09   0
+ 15  ...................   3.03  0.12 0.99/0.30/1.00 1.00 0.93 0.08   0
+ 16  ...................   3.94  0.10 1.00/0.27/1.00 1.00 0.96 0.08   0
+ 17  ...................   3.49  0.11 1.00/0.36/1.00 1.00 0.98 0.08   0
+ 18  ...................   3.40  0.12 1.00/0.50/1.00 1.00 0.98 0.08   0
+ 19  ...................   0.75  0.12 1.00/0.54/1.00 1.00 0.99 0.08   0
+ 20  ...................   0.39  0.12 1.00/0.76/1.00 1.00 1.00 0.08   0
+ 21  ...................   0.23  0.11 1.00/0.78/1.00 1.00 1.00 0.07   0
+ 22  ...................   0.23  0.10 1.00/0.80/1.00 1.00 1.00 0.07   0
+ 23  ...................   0.23  0.12 1.00/0.78/1.00 1.00 1.00 0.07   0
+ 24  ...................   0.08  0.11 1.00/0.92/1.00 1.00 1.00 0.07   0
+ 25  ...................   0.00  0.11 1.00/1.00/1.00 1.00 1.00 0.07   0
+ 26  ...................   0.00  0.11 1.00/1.00/1.00 1.00 1.00 0.07   0
+[mcl] jury pruning marks: <99,99,99>, out of 100
+[mcl] jury pruning synopsis: <99.0 or perfect> (cf -scheme, -do log)
+[mcl] output is in out/merged_mcl20.clusters
+[mcl] 13711 clusters found
+[mcl] output is in out/merged_mcl20.clusters
+
+Please cite:
+    Stijn van Dongen, Graph Clustering by Flow Simulation.  PhD thesis,
+    University of Utrecht, May 2000.
+       (  http://www.library.uu.nl/digiarchief/dip/diss/1895620/full.pdf
+       or  http://micans.org/mcl/lit/svdthesis.pdf.gz)
+OR
+    Stijn van Dongen, A cluster algorithm for graphs. Technical
+    Report INS-R0010, National Research Institute for Mathematics
+    and Computer Science in the Netherlands, Amsterdam, May 2000.
+       (  http://www.cwi.nl/ftp/CWIreports/INS/INS-R0010.ps.Z
+       or  http://micans.org/mcl/lit/INS-R0010.ps.Z)
+
+/home/jyshang2/miniconda3/envs/phagcn/lib/python3.8/site-packages/Bio/Seq.py:2334: BiopythonWarning: Partial codon, len(sequence) not a multiple of three. Explicitly trim the sequence or add trailing N before translation. This may become an error in future.
+  warnings.warn(
+run_KnowledgeGraph.py:414: RuntimeWarning: divide by zero encountered in log10
+  sig = min(max_sig, np.nan_to_num(-np.log10(pval) - logT))
+folder out/ exist... cleaning dictionary
+Dictionary cleaned
+folder single_contig/ exist... cleaning dictionary
+Dictionary cleaned
+folder all_proteins/ exist... cleaning dictionary
+Dictionary cleaned
+
+
+---------------------------------Diamond BLASTp---------------------------------
+Creating Diamond database and running Diamond...
+Creating Diamond database...
+Running Diamond...
+
+
+-------------------------------Protein clustering-------------------------------
+Loading proteins...
+Running MCL...
+Building the cluster and profiles (this may take some time...)
+Using MCL to generate PCs.
+Saving files
+Read 1461 entries from out/pcs_contigs.csv
+Read 171764 entries (dropped 777 singletons) from out/Cyber_profiles.csv
+.......... 3.73% 10000/268332.0
+.......... 7.45% 20000/268332.0
+..........11.18% 30000/268332.0
+..........14.91% 40000/268332.0
+..........18.63% 50000/268332.0
+..........22.36% 60000/268332.0
+..........26.09% 70000/268332.0
+..........29.81% 80000/268332.0
+..........33.54% 90000/268332.0
+..........37.27% 100000/268332.0
+..........40.99% 110000/268332.0
+..........44.72% 120000/268332.0
+..........48.45% 130000/268332.0
+..........52.17% 140000/268332.0
+..........55.90% 150000/268332.0
+..........59.63% 160000/268332.0
+..........63.35% 170000/268332.0
+..........67.08% 180000/268332.0
+..........70.81% 190000/268332.0
+..........74.53% 200000/268332.0
+..........78.26% 210000/268332.0
+..........81.99% 220000/268332.0
+..........85.71% 230000/268332.0
+..........89.44% 240000/268332.0
+..........93.17% 250000/268332.0
+..........96.89% 260000/268332.0
+......Hypergeometric contig-similarity network:
+       1461 contigs,
+     112088 edges (min:1.0max: 3e+02, threshold was 1)
+Saving network in file out/network.ntw (112088 lines).
+
+
+------------------------------Calculating E-edges-------------------------------
+
+
+------------------------------Calculating P-edges-------------------------------
+
+
+---------------------------Generating Knowledge graph---------------------------
+run_GCN.py:68: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  train_mask = torch.from_numpy(train_mask.astype(np.bool)).to(device)
+run_GCN.py:70: DeprecationWarning: `np.bool` is a deprecated alias for the builtin `bool`. To silence this warning, use `bool` by itself. Doing this will not modify any behavior and is safe. If you specifically wanted the numpy scalar type, use `np.bool_` here.
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  test_mask = torch.from_numpy(test_mask.astype(np.bool)).to(device)
+/home/jyshang2/new_version/PhaGCN/utils.py:52: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead. (Triggered internally at  /opt/conda/conda-bld/pytorch_1614378083779/work/aten/src/ATen/native/IndexingUtils.h:30.)
+  i = i[:, dropout_mask]
+/home/jyshang2/new_version/PhaGCN/utils.py:53: UserWarning: indexing with dtype torch.uint8 is now deprecated, please use a dtype torch.bool instead. (Triggered internally at  /opt/conda/conda-bld/pytorch_1614378083779/work/aten/src/ATen/native/IndexingUtils.h:30.)
+  v = v[dropout_mask]
+Namespace(database='Caudoviridae', dropout=0, epochs=200, hidden=64, learning_rate=0.01, max_degree=3, model='gcn', weight_decay=0.0005)
+adj: (1460, 1460)
+features: (1460, 512)
+y: (1460,) (1460,)
+mask: (1460,) (1460,)
+x : tensor(indices=tensor([[   0,    0,    0,  ..., 1459, 1459, 1459],
+                       [ 511,  505,  500,  ...,   51,   36,   35]]),
+       values=tensor([0.0009, 0.0037, 0.0020,  ..., 0.0053, 0.0022, 0.0008]),
+       device='cuda:0', size=(1460, 512), nnz=67005, layout=torch.sparse_coo)
+sp: tensor(indices=tensor([[   0,    1,    2,  ..., 1457, 1458, 1459],
+                       [   0,    0,    0,  ..., 1459, 1459, 1459]]),
+       values=tensor([0.0167, 0.0167, 0.0167,  ..., 0.0417, 0.0417, 0.0417]),
+       device='cuda:0', size=(1460, 1460), nnz=113548, layout=torch.sparse_coo)
+input dim: 512
+output dim: 19
+num_features_nonzero: 67005
+0 25.410409927368164 0.12253641816623821
+10 18.997928619384766 0.9408740359897172
+20 14.008305549621582 0.9708654670094259
+30 10.99681568145752 0.9777206512425022
+40 9.382830619812012 0.9974293059125964
+folder input exist... cleaning dictionary
+folder pred exist... cleaning dictionary
+folder Split_files exist... cleaning dictionary
+
+real	76m14.336s
+user	73m12.684s
+sys	2m38.262s
