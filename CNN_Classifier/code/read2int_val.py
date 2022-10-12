@@ -31,7 +31,7 @@ def encode(file_name):
             try:
                 int_read.append(vocab_to_int[read[i:i+3]])
             except:
-                 int_read.append(64)        
+                int_read.append(64)        
         
         if len(int_read) != 1998:
             print("error length")
