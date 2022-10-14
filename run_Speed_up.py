@@ -151,6 +151,12 @@ for i in range(file_id):
     cmd = "rm name_list.csv prediction.csv"
     out = subprocess.check_call(cmd, shell=True)
 
+df_list = []    
+for file in sorted(list(os.listdir('pred'))):
+    df_list.append(pd.read_csv(f'pred/{file}'))
 
-cmd = "cat pred/* > final_prediction.csv"
-out = subprocess.check_call(cmd, shell=True)
+df = pd.concat(df_list)
+df.to_csv('final_prediction.csv', index=False)
+#cmd = "cat pred/* > final_prediction.csv"
+#out = subprocess.check_call(cmd, shell=True)
+
