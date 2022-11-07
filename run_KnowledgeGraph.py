@@ -722,6 +722,7 @@ for node in G.nodes:
             label[test_to_id[node]] = neighbor_label[0]
             cnt += 1
 
+"""
 group_other = {}
 group = 0
 with open("Cyber_data/other_group.csv", 'w') as file_out:
@@ -748,5 +749,5 @@ with open("Cyber_data/other.csv", 'w') as file_out:
     file_out.write("contig_names,prediction,score\n")
     for node in remained_idx:
         file_out.write(f'{node},unknown,1\n')
-
+"""
 pkl.dump(label, open("Cyber_data/contig.label", "wb" ) )

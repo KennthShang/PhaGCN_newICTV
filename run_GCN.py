@@ -163,8 +163,8 @@ if mode == "validation":
 pred_to_label = {0: 'Autographiviridae', 1: 'Straboviridae', 2: 'Herelleviridae', 3: 'Drexlerviridae', 4: 'Demerecviridae', 5: 'Peduoviridae', 6: 'Casjensviridae', 7: 'Schitoviridae', 8: 'Kyanoviridae', 9: 'Ackermannviridae', 10: 'Rountreeviridae', 11: 'Salasmaviridae', 12: 'Vilmaviridae', 13: 'Zierdtviridae', 14: 'Mesyanzhinovviridae', 15: 'Chaseviridae', 16: 'Zobellviridae', 17: 'Orlajensenviridae', 18: 'Guelinviridae', 19: 'Steigviridae', 20: 'Duneviridae', 21: 'Pachyviridae', 22: 'Winoviridae', 23: 'Assiduviridae', 24: 'Suoliviridae', 25: 'Naomviridae', 26: 'Intestiviridae', 27: 'Crevaviridae', 28: 'Pervagoviridae'}
 
 
-df_other_group = pd.read_csv('Cyber_data/other_group.csv')
-df_other = pd.read_csv('Cyber_data/other.csv')
+#df_other_group = pd.read_csv('Cyber_data/other_group.csv')
+#df_other = pd.read_csv('Cyber_data/other.csv')
 with open("Cyber_data/prediction.csv", 'w') as f_out:
     _ = f_out.write("contig_names,prediction,score\n")
     for key in test_to_id.keys():
@@ -175,5 +175,5 @@ with open("Cyber_data/prediction.csv", 'w') as f_out:
             _ = f_out.write(f'{key},{tmp},1\n')
         else:
             _ = f_out.write(str(key) + "," + str(pred_to_label[labels[test_to_id[key]]]) + "," + str(1) + "\n")
-    for key in df_other['contig_names'].values:
-        _ = f_out.write(f'{key},unknown,1\n')
+    #for key in df_other['contig_names'].values:
+    #    _ = f_out.write(f'{key},unknown,1\n')
