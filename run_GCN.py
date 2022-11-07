@@ -1,5 +1,5 @@
 import  numpy as np
-
+import  pandas as pd
 import  torch
 from    torch import nn
 from    torch import optim
@@ -159,17 +159,21 @@ if mode == "validation":
     print(np.sum(test_label == test_pred)/len(test_pred))
 
 
-#pred_to_label = {0:"Ackermannviridae", 1:"Autographiviridae", 2:"Demerecviridae",
-#3:"Drexlerviridae", 4:"Herelleviridae", 5:"Myoviridae", 6:"Podoviridae", 7:"Siphoviridae"}
 
 pred_to_label = {0: 'Autographiviridae', 1: 'Straboviridae', 2: 'Herelleviridae', 3: 'Drexlerviridae', 4: 'Demerecviridae', 5: 'Peduoviridae', 6: 'Casjensviridae', 7: 'Schitoviridae', 8: 'Kyanoviridae', 9: 'Ackermannviridae', 10: 'Rountreeviridae', 11: 'Salasmaviridae', 12: 'Vilmaviridae', 13: 'Zierdtviridae', 14: 'Mesyanzhinovviridae', 15: 'Chaseviridae', 16: 'Zobellviridae', 17: 'Orlajensenviridae', 18: 'Guelinviridae', 19: 'Steigviridae', 20: 'Duneviridae', 21: 'Pachyviridae', 22: 'Winoviridae', 23: 'Assiduviridae', 24: 'Suoliviridae', 25: 'Naomviridae', 26: 'Intestiviridae', 27: 'Crevaviridae', 28: 'Pervagoviridae'}
 
 
-with open("prediction.csv", 'w') as f_out:
+df_other_group = pd.read_csv('Cyber_data/other_group.csv')
+df_other = pd.read_csv('Cyber_data/other.csv')
+with open("Cyber_data/prediction.csv", 'w') as f_out:
     _ = f_out.write("contig_names,prediction,score\n")
     for key in test_to_id.keys():
         if labels[test_to_id[key]] == -1:
             _ = f_out.write(str(key) + "," + str(pred_to_label[pred[test_to_id[key]]]) + "," + str(score[test_to_id[key]]) + "\n")
+        elif labels[test_to_id[key]] == -2:
+            tmp = df_other_group[df_other_group['contig_names']== key]['prediction'].values[0]
+            _ = f_out.write(f'{key},{tmp},1\n')
         else:
             _ = f_out.write(str(key) + "," + str(pred_to_label[labels[test_to_id[key]]]) + "," + str(1) + "\n")
-
+    for key in df_other['contig_names'].values:
+        _ = f_out.write(f'{key},unknown,1\n')

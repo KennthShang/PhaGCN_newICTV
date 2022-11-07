@@ -509,11 +509,9 @@ gene2genome = pd.read_csv(database+"Caudovirales_gene_to_genomes.csv")
 contig_id = gene2genome["contig_id"].values
 contig_id = [item.replace(" ", "~") for item in contig_id]
 gene2genome["contig_id"] = contig_id
-#taxnomic_df = pd.read_csv(database+"merged_df.csv", )
-#taxnomic_df = taxnomic_df.drop(["Unnamed: 0", 'pos'], axis=1)
+
 
 protein_to_ref = {protein:ref for protein, ref in zip(gene2genome["protein_id"].values, gene2genome["contig_id"].values)}
-#ref_to_num = {ref:num for ref, num in zip(taxnomic_df["contig_id"].values, taxnomic_df["proteins"].values)}
 
 contig_set = list(set(gene2genome["contig_id"].values))
 ID_to_ref = {i:ref for i, ref in enumerate(contig_set)}
@@ -568,16 +566,6 @@ tmp_id  = reference_df["idx"].values
 for ref, idx in zip(tmp_ref,tmp_id):
     name_to_id[ref.replace(" ", "~")] = idx
 
-#file_list = os.listdir(database+"species/")
-#file_list = sorted(file_list)
-#for file_n in file_list:
-#    idx = file_n.split(".")[0]
-#    for record in SeqIO.parse(database+"species/"+file_n, "fasta"):
-#        name = record.description
-#        name = name.split("|")[1]
-#        name = name.split(",")[0]
-#        name = name.replace(" ", "~")
-#    name_to_id[name] = idx
 
 
 
@@ -615,16 +603,7 @@ with open(out_f+"/network.ntw") as file_in:
             exit(1)
 
         G.add_edge(node1, node2, weight = 1)
-        #if node1 in name_to_id.keys() and node2 in name_to_id.keys():
-        #    G.add_edge(node1, node2, weight = 1)
-        #elif "_" in node1 and node2 in name_to_id.keys():
-        #    G.add_edge(node1, node2, weight = 1)
-        #elif node1 in name_to_id.keys() and "_" in node2 :
-        #    G.add_edge(node1, node2, weight = 1)
-        #elif "_" in node1 and "_" in node2 :
-        #    G.add_edge(node1, node2, weight = 1)    
-        #else:
-        #    continue
+
 
 # Add e-edges to the graph
 cnt = 0
@@ -742,5 +721,32 @@ for node in G.nodes:
         if len(set(neighbor_label)) == 1:
             label[test_to_id[node]] = neighbor_label[0]
             cnt += 1
+
+group_other = {}
+group = 0
+with open("Cyber_data/other_group.csv", 'w') as file_out:
+    file_out.write("contig_names,prediction,score\n")
+    for sub in nx.connected_components(G):
+        flag = 0
+        for node in sub:
+            if "~" in node:
+                flag = 1
+        if not flag:
+            for node in sub:
+                group_other[node] = group
+                file_out.write(f'{node},unknown_group_{group},1\n')
+                label[test_to_id[node]] = -2
+            group += 1
+
+
+name_list = pd.read_csv("name_list.csv")
+all_idx = name_list['idx'].values
+all_idx_in_graph = list(test_to_id.keys())
+
+remained_idx = set(all_idx) - set(all_idx_in_graph)
+with open("Cyber_data/other.csv", 'w') as file_out:
+    file_out.write("contig_names,prediction,score\n")
+    for node in remained_idx:
+        file_out.write(f'{node},unknown,1\n')
 
 pkl.dump(label, open("Cyber_data/contig.label", "wb" ) )

@@ -57,7 +57,7 @@ else:
 
 
 try:
-    if os.path.exists('database/database.self-diamond.tab'):
+    if os.path.exists('database/database.self-diamond.tab.abc'):
         print(f'Using preformatted DIAMOND database ...')
     else:
         make_diamond_cmd = 'diamond makedb --threads 8 --in database/Caudovirales_protein.fasta -d database/database.dmnd'
@@ -142,17 +142,18 @@ for i in range(file_id):
     out = subprocess.check_call(cmd, shell=True)
 
     name_list = pd.read_csv("name_list.csv")
-    prediction = pd.read_csv("prediction.csv")
+    prediction = pd.read_csv("Cyber_data/prediction.csv")
     prediction = prediction.rename(columns={'contig_names':'idx'})
     contig_to_pred = pd.merge(name_list, prediction, on='idx')
     contig_to_pred.to_csv("pred/contig_"+str(i)+".csv", index = None)
 
-    cmd = "rm name_list.csv prediction.csv"
+    cmd = "rm name_list.csv"
     out = subprocess.check_call(cmd, shell=True)
 
 df_list = []    
 for file in sorted(list(os.listdir('pred'))):
-    df_list.append(pd.read_csv(f'pred/{file}'))
+    if 'contig' in file:
+        df_list.append(pd.read_csv(f'pred/{file}'))
 
 df = pd.concat(df_list)
 df.to_csv('final_prediction.csv', index=False)
