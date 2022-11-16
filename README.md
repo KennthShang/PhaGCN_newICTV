@@ -1,5 +1,7 @@
 # PhaGCN_newICTV
 
+<img src='phagcn_logo.png'>
+
 This is a new version of PhaGCN for latest published ICTV2022 taxonomy. In the current version of ICTV, the phage families are: 
 
 ```
