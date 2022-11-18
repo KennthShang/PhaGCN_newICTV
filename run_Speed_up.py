@@ -81,11 +81,41 @@ except:
 #def special_match(strg, search=re.compile(r'[^ACGT]').search):
 #    return not bool(search(strg))
 
+##  Filter unknown family 
+query_file = f"{args.contigs}"
+db_virus_prefix = f"database/unknown_db/db"
+output_file = f"unknown_out.tab"
+virus_call = NcbiblastnCommandline(query=query_file,db=db_virus_prefix,out=output_file,outfmt="6 qseqid sseqid evalue pident length qlen", evalue=1e-10,
+                                 task='megablast',perc_identity=95,num_threads=threads)
+virus_call()
+
+
+check_unknown = {}
+with open(output_file) as file_out:
+    for line in file_out.readlines():
+        parse = line.replace("\n", "").split("\t")
+        virus = parse[0]
+        ident  = float(parse[-3])
+        length = float(parse[-2])
+        qlen   = float(parse[-1])
+        if length/qlen > 0.95 and ident > 0.95:
+            check_unknown[virus] = 1
+
+rec = []
+for record in SeqIO.parse(f'{args.contigs}', 'fasta'):
+    try:
+        if check_unknown[record.id]:
+            continue
+    except:
+        rec.append(record)
+
+SeqIO.write(rec, f'filtered_contigs.fa', 'fasta')
+
 
 cnt = 0
 file_id = 0
 records = []
-for record in SeqIO.parse(args.contigs, 'fasta'):
+for record in SeqIO.parse('filtered_contigs.fa', 'fasta'):
     if cnt !=0 and cnt%1000 == 0:
         SeqIO.write(records, "Split_files/contig_"+str(file_id)+".fasta","fasta") 
         records = []
