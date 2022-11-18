@@ -3,6 +3,7 @@ import pandas as pd
 import os
 import Bio
 from Bio import SeqIO
+from Bio.Blast.Applications import NcbiblastnCommandline
 import pandas as pd
 import subprocess
 import argparse
