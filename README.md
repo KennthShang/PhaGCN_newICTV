@@ -9,7 +9,7 @@ This is a new version of PhaGCN for latest published ICTV2022 taxonomy. In the c
 ```
 Some of the previous families such as Podo, Myo, and Sipho are removed. Please refer to the link for futher information: [ICTV](https://ictv.global/taxonomy). 
 
-**Please note that for phages that currently do not belong to any family, the program will not assign any label to them. The results will be stored in phage_do_have_family.csv if they are in your input files**
+***Please note that for phages that currently do not belong to any family, the program will not assign any label to them. The results will be stored in phage_do_have_family.csv if they are in your input files***
 
 
 Becase the basic componet of PhaGCN is the same, you do not need to install the packages twice if you have already install the conda env of PhaGCN before. The only thing you need to do is to run PhaGCN with this new model (GitHub folder).
