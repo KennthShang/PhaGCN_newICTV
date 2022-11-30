@@ -103,6 +103,14 @@ with open(output_file) as file_out:
         if length/qlen > 0.95 and ident > 0.95:
             check_unknown[virus] = 1
 
+try:
+    with open('phage_do_have_family.csv', 'w') as file:
+        file.write('Accession,Family,Score\n')
+            for name in check_unknown:
+                file.write(f'{name},no_family_avaliable,1\n')
+except:
+    pass
+        
 rec = []
 for record in SeqIO.parse(f'{args.contigs}', 'fasta'):
     try:
