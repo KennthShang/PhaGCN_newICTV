@@ -15,6 +15,7 @@ parser.add_argument('--len', type=int, default=8000)
 parser.add_argument('--threads', type=int, default=8)
 args = parser.parse_args()
 
+threads = args.threads
 
 if not os.path.exists("input"):
     _ = os.makedirs("input")
@@ -61,10 +62,10 @@ try:
     if os.path.exists('database/database.self-diamond.tab.abc'):
         print(f'Using preformatted DIAMOND database ...')
     else:
-        make_diamond_cmd = 'diamond makedb --threads 8 --in database/Caudovirales_protein.fasta -d database/database.dmnd'
+        make_diamond_cmd = 'diamond makedb --threads {threads} --in database/Caudovirales_protein.fasta -d database/database.dmnd'
         print("Creating Diamond database...")
         _ = subprocess.check_call(make_diamond_cmd, shell=True)
-        diamond_cmd = 'diamond blastp --threads 8 --sensitive -d database/database.dmnd -q database/Caudovirales_protein.fasta -o database/database.self-diamond.tab'
+        diamond_cmd = 'diamond blastp --threads {threads} --sensitive -d database/database.dmnd -q database/Caudovirales_protein.fasta -o database/database.self-diamond.tab'
         print("Running Diamond...")
         _ = subprocess.check_call(diamond_cmd, shell=True)
         diamond_out_fp = "database/database.self-diamond.tab"
