@@ -106,8 +106,8 @@ with open(output_file) as file_out:
 try:
     with open('phage_do_have_family.csv', 'w') as file:
         file.write('Accession,Family,Score\n')
-            for name in check_unknown:
-                file.write(f'{name},no_family_avaliable,1\n')
+        for name in check_unknown:
+            file.write(f'{name},no_family_avaliable,1\n')
 except:
     pass
         
